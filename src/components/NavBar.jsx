@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import bgImage from '../assets/nav-bg.jpg'; // Import the background image
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,13 +35,17 @@ const NavBar = () => {
 
     return (
         <motion.nav
-            className="sticky top-0 z-50 bg-[#f8f9fa] bg-opacity-90 backdrop-filter backdrop-blur-lg"
+            className="relative sticky top-0 z-50 bg-center bg-cover bg-opacity-90 backdrop-filter backdrop-blur-lg"
+            style={{ backgroundImage: `url(${bgImage})` }} // Apply the background image
             variants={navVariants}
             initial="hidden"
             animate="visible"
         >
+            {/* White opacity overlay */}
+            <div className="absolute inset-0 bg-white bg-opacity-70" /> {/* Adjust opacity as needed */}
+
             {/* Top Layer - Logo Text Left and Camera Icon Right for Small Screens */}
-            <div className="flex items-center justify-between max-w-screen-xl p-4 mx-auto sm:p-6 md:justify-center"> {/* Decreased padding on small screens */}
+            <div className="relative z-10 flex items-center justify-between max-w-screen-xl p-4 mx-auto sm:p-6 md:justify-center">
                 {/* Logo Text (left on small screens, centered on medium and up) */}
                 <a href="/" className="text-left md:text-center">
                     <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#5b4a40] font-serif tracking-wide">
@@ -61,7 +66,7 @@ const NavBar = () => {
             </div>
 
             {/* Bottom Layer - Nav Links */}
-            <div className="flex flex-wrap items-center justify-center max-w-screen-xl p-2 mx-auto sm:p-4"> {/* Decreased padding on small screens */}
+            <div className="relative z-10 flex flex-wrap items-center justify-center max-w-screen-xl p-2 mx-auto sm:p-4">
                 <motion.div
                     className={`items-center justify-between ${isMenuOpen ? 'block' : 'hidden'} w-full md:flex md:w-auto`}
                     id="navbar-cta"
