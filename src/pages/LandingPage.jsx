@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import NavBar from '../components/NavBar';
-import background from '../assets/background.jpg'; 
-import homeImage from '../assets/woman.png';
-import peopleImage from '../assets/people.jpeg';
-
+import background from '../assets/background.jpg';  // Change to a vintage-style background
+import mainImage from '../assets/home.png';  // Replace with a relevant photography image
+import galleryImage from '../assets/woman.png';  // Replace with a relevant gallery image
 
 function Counter({ finalCount }) {
   const [count, setCount] = useState(0);
@@ -29,6 +28,7 @@ function Counter({ finalCount }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
+      className="text-[#6b4f3d] font-serif"
     >
       {count}
     </motion.span>
@@ -38,11 +38,11 @@ function Counter({ finalCount }) {
 function Landing() {
   return (
     <motion.div
-      className="font-poppins"
       style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
+      className="font-serif text-[#6b4f3d]"
     >
       <NavBar />
       <div className="container px-8 mx-auto lg:px-40">
@@ -54,9 +54,9 @@ function Landing() {
             transition={{ duration: 1, delay: 0.5 }}
           >
             <motion.img
-              src={homeImage}
-              alt="Home"
-              className="w-full max-w-sm lg:max-w-md xl:max-w-lg"
+              src={mainImage}
+              alt="Photography"
+              className="w-full max-w-sm rounded-lg shadow-lg lg:max-w-md xl:max-w-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             />
@@ -67,16 +67,16 @@ function Landing() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <h1 className="text-3xl font-bold leading-tight text-center md:text-4xl lg:text-5xl xl:text-6xl lg:text-left">
+            <h1 className="text-4xl font-bold leading-tight text-center md:text-5xl lg:text-6xl xl:text-7xl lg:text-left">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1 }}
               >
-                Professional<br />
-                <strong>Fitness Workouts</strong><br />
+                Capturing<br />
+                <strong>Timeless Moments</strong><br />
               </motion.span>
-              For Everyone
+              In Every Frame
             </h1>
             <p className="mt-5 text-lg text-center lg:text-left">
               <motion.span
@@ -84,20 +84,19 @@ function Landing() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1.5 }}
               >
-                You can start fitness every day through <strong>The Programs</strong> that we make for
-                you. At home, <strong>Without Any Trouble</strong>, just start right now.
+                Discover the art of photography with our vintage-inspired collections. Experience a world of <strong>beautiful moments</strong> captured just for you.
               </motion.span>
             </p>
             <div className="flex flex-wrap justify-center mt-8 space-x-4 lg:justify-start">
               <motion.button
-                className="px-6 py-3 mb-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
+                className="px-6 py-3 mb-2 font-bold text-white bg-[#8b5e4f] rounded-lg hover:bg-[#7a4e3e] border border-[#6b4f3d]"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                Get Started
+                Explore Gallery
               </motion.button>
               <motion.button
-                className="px-6 py-3 mb-2 font-bold text-gray-800 bg-white border-2 border-gray-400 rounded-lg hover:bg-gray-200"
+                className="px-6 py-3 mb-2 font-bold text-gray-800 bg-[#f5f5f5] border-2 border-gray-400 rounded-lg hover:bg-gray-200"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -107,8 +106,8 @@ function Landing() {
           </motion.div>
         </main>
 
-        <div className="grid grid-cols-1 py-12 mt-8 bg-tranceparent lg:grid-cols-2 lg:py-10">
-          <div className="grid grid-cols-1 gap-8 p-10 bg-[#FDF2E9] sm:grid-cols-3">
+        <div className="grid grid-cols-1 py-12 mt-8 bg-[#f9f5f0] lg:grid-cols-2 lg:py-10">
+          <div className="grid grid-cols-1 gap-8 p-10 bg-[#fff8f1] sm:grid-cols-3">
             <motion.div
               className="text-left"
               initial={{ opacity: 0, y: -50 }}
@@ -117,11 +116,11 @@ function Landing() {
             >
               <h2 className="text-2xl font-bold lg:text-3xl">
                 <AnimatePresence>
-                  <Counter finalCount={12} key="experience" />
+                  <Counter finalCount={15} key="years" />
                 </AnimatePresence>
                 {' '} Years
               </h2>
-              <p className="mt-2 text-lg font-bold text-gray-500">Year Experience</p>
+              <p className="mt-2 text-lg font-bold text-gray-500">Years of Experience</p>
             </motion.div>
             <motion.div
               className="text-left"
@@ -131,10 +130,10 @@ function Landing() {
             >
               <h2 className="text-2xl font-bold lg:text-3xl">
                 <AnimatePresence>
-                  <Counter finalCount={87} key="trainers" />
+                  <Counter finalCount={200} key="photos" />
                 </AnimatePresence>
               </h2>
-              <p className="mt-2 text-lg font-bold text-gray-500">Expert Trainers</p>
+              <p className="mt-2 text-lg font-bold text-gray-500">Photos Taken</p>
             </motion.div>
             <motion.div
               className="text-left"
@@ -144,30 +143,29 @@ function Landing() {
             >
               <h2 className="text-2xl font-bold lg:text-3xl">
                 <AnimatePresence>
-                  <Counter finalCount={432} key="classes" />
+                  <Counter finalCount={50} key="exhibitions" />
                 </AnimatePresence>
               </h2>
-              <p className="mt-2 text-lg font-bold text-gray-500">Classes</p>
+              <p className="mt-2 text-lg font-bold text-gray-500">Exhibitions</p>
             </motion.div>
           </div>
 
           <motion.div
-            className="flex items-center justify-center p-10 bg-gray-100"
+            className="flex items-center justify-center p-10 bg-[#eae4d6]"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1 }}
           >
-            <
-              motion.img
-              src={peopleImage}
-              alt="People"
-              className="h-24 mr-4 rounded-full w-30 lg "
+            <motion.img
+              src={galleryImage}
+              alt="Gallery"
+              className="h-24 mr-4 rounded-full w-30"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             />
             <div>
-              <h2 className="text-2xl font-bold lg:text-3xl">187K</h2>
-              <p className="mt-2 text-lg font-bold text-gray-500">Active Customers In The World</p>
+              <h2 className="text-2xl font-bold lg:text-3xl">50K</h2>
+              <p className="mt-2 text-lg font-bold text-gray-500">Happy Clients Worldwide</p>
             </div>
           </motion.div>
         </div>
