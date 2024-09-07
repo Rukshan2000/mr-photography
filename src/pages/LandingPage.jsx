@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import NavBar from '../components/NavBar';
 import About from '../components/About';
-
 
 // Define image paths
 import img1 from '../mainImg/img1.jpg';
@@ -21,6 +20,20 @@ const images = [
 
 const ImageSlider = () => {
   const [imageList] = useState([...images, ...images]); // Duplicate for continuous scroll
+  const [duration, setDuration] = useState(10); // Default duration
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDuration(window.innerWidth < 768 ? 5 : 10); // Set duration based on screen width
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div>
@@ -35,7 +48,7 @@ const ImageSlider = () => {
           transition={{
             repeat: Infinity,
             ease: 'linear',
-            duration: 30, // Adjust the duration to control the scroll speed
+            duration: duration, // Apply dynamic duration
           }}
         >
           {imageList.map((image, index) => (
@@ -57,7 +70,7 @@ const ImageSlider = () => {
           ))}
         </motion.div>
       </div>
-      <About/>
+      <About />
     </div>
   );
 };
