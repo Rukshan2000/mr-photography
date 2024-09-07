@@ -5,38 +5,49 @@ import CursoleLarge from '../components/CursoleLarge';  // Import CursoleLarge c
 import CursoleSmall from '../components/CursoleSmall';  // Import CursoleSmall component
 import Cards from '../components/Cards';
 import Gallery from '../components/Gallery';
+import Footer from '../components/Footer';
 
-const ImageSlider = () => {
+const LandingPage = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
-    // Function to check the screen width and update state
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768); // Set true if screen is less than 768px
     };
 
-    // Run on initial render and when window is resized
     window.addEventListener('resize', handleResize);
     handleResize(); // Initial check
 
-    // Cleanup event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleNavClick = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div>
-      {/* Render the NavBar */}
-      <NavBar />
+      {/* Pass handleNavClick function to NavBar */}
+      <NavBar onNavClick={handleNavClick} />
 
       {/* Render CursoleLarge or CursoleSmall based on screen width */}
       {isSmallScreen ? <CursoleSmall /> : <CursoleLarge />}
 
-      {/* Render About Section */}
-      <About />
-      <Cards/>
-      <Gallery />
+      <section id="home">
+        <About />
+      </section>
+      <section id="services">
+        <Cards/>
+      </section>
+      <section id="gallery">
+        <Gallery />
+      </section>
+      <Footer/>
     </div>
   );
 };
 
-export default ImageSlider;
+export default LandingPage;

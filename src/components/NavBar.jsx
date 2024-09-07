@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 import bgImage from '../assets/nav-bg.jpg'; // Import the background image
 
-const NavBar = () => {
+const NavBar = ({ onNavClick }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMenuOpen(window.innerWidth > 768);
+            if (window.innerWidth > 768) {
+                setIsMenuOpen(true); // Open menu on larger screens
+            } else {
+                setIsMenuOpen(false); // Close menu on smaller screens
+            }
         };
 
         window.addEventListener('resize', handleResize);
-        handleResize();
+        handleResize(); // Initial check
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     const toggleMenu = () => {
@@ -31,6 +34,11 @@ const NavBar = () => {
     const menuVariants = {
         hidden: { opacity: 0, height: 0 },
         visible: { opacity: 1, height: 'auto', transition: { duration: 0.5, ease: 'easeOut' } }
+    };
+
+    const handleNavClick = (sectionId) => {
+        onNavClick(sectionId);
+        // Don't close the menu on click
     };
 
     return (
@@ -75,15 +83,17 @@ const NavBar = () => {
                     animate={isMenuOpen ? 'visible' : 'hidden'}
                 >
                     <ul className="flex flex-col p-4 mt-4 font-serif font-medium border border-[#d4c0a1] rounded-lg bg-[#f8f9fa] md:p-0 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-                        {['Home', 'Portfolio', 'Services', 'Gallery', 'Contact'].map((item, index) => (
+                        {['home', 'about', 'services', 'gallery', 'contact'].map((item, index) => (
                             <li key={index}>
-                                <a
-                                    href="#"
+                                <Link
+                                    to={item}
+                                    smooth={true}
+                                    duration={500}
                                     className="block px-3 py-2 text-[#5b4a40] rounded md:p-0 hover:bg-[#e8ded3] md:hover:bg-transparent md:hover:text-[#7e6c59]"
-                                    aria-current="page"
+                                    onClick={() => handleNavClick(item)}
                                 >
-                                    {item}
-                                </a>
+                                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                                </Link>
                             </li>
                         ))}
                     </ul>

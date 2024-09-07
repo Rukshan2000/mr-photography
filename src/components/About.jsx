@@ -22,11 +22,12 @@ const About = () => {
         >
           <h2 className="mb-6 font-serif text-4xl font-bold" style={{ color: '#4E342E' }}>About Mr. Photography</h2>
           <p className="mb-6 font-serif text-lg" style={{ color: '#4E342E' }}>
-          Welcome to Mr. Photography! We are dedicated to capturing timeless moments and transforming them into beautiful memories that last a lifetime. Our expertise lies in blending classic photography techniques with a modern artistic vision to deliver stunning visuals that evoke emotion and nostalgia.
+          Welcome to Mr. Photography! We capture timeless moments and turn them into lasting memories. Combining classic techniques with a modern artistic vision, we deliver stunning visuals that evoke both emotion and nostalgia.
 
-At Mr. Photography, we take pride in our commitment to the vintage aesthetic, combining traditional methods with contemporary flair to create images that are both elegant and innovative. Whether it's a special event, a family portrait, or a creative project, our approach ensures that each photograph tells a unique story with a touch of sophistication.
+Our commitment to vintage aesthetics blends traditional methods with contemporary flair, ensuring each photograph tells a unique and sophisticated story. Whether for special events, family portraits, or creative projects, we bring a classic touch to every image.
 
-Explore our gallery to discover how we bring our distinctive style to life. Each image showcases our dedication to detail and passion for photography, offering a glimpse into the beautiful, enduring images we create. We invite you to experience our work and see how our classic touch can make your moments truly unforgettable.          </p>
+Explore our gallery to see how our distinctive style brings your moments to life with elegance and detail.
+          </p>
         </motion.div>
       </div>
     </section>
