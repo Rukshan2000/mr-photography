@@ -33,10 +33,10 @@ const LandingPage = () => {
       {/* Pass handleNavClick function to NavBar */}
       <NavBar onNavClick={handleNavClick} />
 
-      {/* Render CursoleLarge or CursoleSmall based on screen width */}
-      {isSmallScreen ? <CursoleSmall /> : <CursoleLarge />}
-
       <section id="home">
+      {isSmallScreen ? <CursoleSmall /> : <CursoleLarge />}
+      </section>
+      <section id="about">
         <About />
       </section>
       <section id="services">
