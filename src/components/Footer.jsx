@@ -13,31 +13,31 @@ const Footer = () => {
 
       <div className="relative z-10 flex flex-col max-w-screen-xl px-4 mx-auto md:flex-row md:justify-between">
         {/* Left-aligned Contact Information */}
-        <div className="flex-1 mb-6 text-left md:mb-0">
+        <div className="flex-1 mb-6 text-center md:text-left md:mb-0">
           <h3 className="mb-2 font-serif text-2xl text-white">Contact</h3>
           <p className="mb-1 text-lg text-white">rukshantharindu@gmail.com</p>
           <p className="text-lg text-white">+94779054385</p>
         </div>
 
-        <div className="flex-1 mb-6 text-center md:mb-0">
+        <div className="flex-1 mb-6 text-center">
           <p className="mb-2 font-serif text-lg text-white">MR Photography</p>
         </div>
 
         {/* Right-aligned Social Media Icons */}
-        <div className="flex-1 mb-6 text-right md:mb-0">
+        <div className="flex-1 mb-6 text-center md:text-right md:mb-0">
           <p className="mb-2 text-lg text-white">Follow us</p>
-          <div className="flex justify-end space-x-4">
+          <div className="flex justify-center space-x-4 md:justify-end">
             <a href="#" className="text-gray-300 hover:text-white">
-              <FaFacebookF />
+              <FaFacebookF className="w-5 h-5" />
             </a>
             <a href="#" className="text-gray-300 hover:text-white">
-              <FaInstagram />
+              <FaInstagram className="w-5 h-5" />
             </a>
             <a href="#" className="text-gray-300 hover:text-white">
-              <FaTwitter />
+              <FaTwitter className="w-5 h-5" />
             </a>
             <a href="#" className="text-gray-300 hover:text-white">
-              <FaLinkedinIn />
+              <FaLinkedinIn className="w-5 h-5" />
             </a>
           </div>
         </div>
